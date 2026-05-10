@@ -1,57 +1,57 @@
-# list is a data structure in Python that can hold multiple items. It is ordered, changeable, and allows duplicate values. Lists are defined using square brackets [].
+# hogwarts.py
+# Demonstrates: lists, len(), index-based iteration, dictionaries, list of dictionaries.
+
 def list_function():
+    # A list holds an ordered sequence of items in a single variable.
+    # Defined with square brackets []. Items are zero-indexed.
     students = ["harry", "hermione", "ron"]
 
+    # for loop iterates over each item — student holds the current value each time.
     for student in students:
         print(student)
 
-    print("list is a data structure in Python that can hold multiple items. It is ordered, changeable, and allows duplicate values. Lists are defined using square brackets [].")
-
-# len() function returns the number of items in a list. In this case, it will return 3 because there are three students in the list.
-
 def len_function():
-
     students = ["harry", "hermione", "ron"]
 
+    # range(len(students)) generates indices 0, 1, 2 — one per item in the list.
+    # Useful when you need both the index (i) and the value (students[i]) at the same time.
     for i in range(len(students)):
         print(i, students[i])
-    
-    print("len() function returns the number of items in a list. In this case, it will return 3 because there are three students in the list.")
-
-# dict is a data structure in Python that can hold key-value pairs. It is unordered, changeable, and does not allow duplicate keys. Dictionaries are defined using curly braces {}.
 
 def dict_function():
+    # --- Basic dictionary approach (simple but limited) ---
+    # A dict maps keys to values. Keys must be unique.
+    # students = {
+    #     "harry": "gryffindor",
+    #     "hermione": "gryffindor",
+    #     "ron": "gryffindor",
+    #     "draco": "slytherin"
+    # }
+    # Problem: only stores one value per student — cannot add age, wand, etc. without restructuring.
 
-# this is basic matrix for students and their houses. It is a dictionary where the keys are the names of the students and the values are their houses. However, this is not a good way to represent this data because it does not allow us to store additional information about the students,
-#    students = {
-#        "harry": "gryffindor",
-#        "hermione": "gryffindor",
-#        "ron": "gryffindor",
-#        "draco": "slytherin"
-#    }
-
+    # --- List of dictionaries (recommended pattern for multiple records) ---
+    # Each dictionary is one complete record. Adding a new field means adding one key per dict,
+    # not creating and synchronizing a separate parallel list.
     students = [
-        {"name": "harry", "house": "gryffindor", "age": 17, "gender": "male", "wand": "holly, phoenix feather", "patronus": "stag"},
-        {"name": "hermione", "house": "gryffindor", "age": 17, "gender": "female", "wand": "walnut, dragon heartstring", "patronus": "otter"},
-        {"name": "ron", "house": "gryffindor", "age": 17, "gender": "male", "wand": "hawthorn, unicorn hair", "patronus": "jack Russell terrier"},
-        {"name": "draco", "house": "slytherin", "age": 17, "gender": "male", "wand": "yew, phoenix feather", "patronus": "dragon"}
+        {"name": "harry",    "house": "gryffindor", "age": 17, "gender": "male",   "wand": "holly, phoenix feather",      "patronus": "stag"},
+        {"name": "hermione", "house": "gryffindor", "age": 17, "gender": "female", "wand": "walnut, dragon heartstring",   "patronus": "otter"},
+        {"name": "ron",      "house": "gryffindor", "age": 17, "gender": "male",   "wand": "hawthorn, unicorn hair",       "patronus": "jack russell terrier"},
+        {"name": "draco",    "house": "slytherin",  "age": 17, "gender": "male",   "wand": "yew, phoenix feather",         "patronus": "dragon"}
     ]
 
-    # this code below can be problematic because it assumes that the keys in the dictionary are the same as the values. In this case, it will print "harry gryffindor", "hermione gryffindor", and "ron gryffindor". However, if the values were different, it would not work as expected.
+    # --- Why not parallel lists? ---
     # students = ["harry", "hermione", "ron"]
-    # houses = ["gryffindor", "gryffindor", "gryffindor"]
+    # houses   = ["gryffindor", "gryffindor", "gryffindor"]
+    # Problem: indices across two lists must be kept in sync manually — easy to break silently.
 
+    # Iterate over the list; each `student` is a dict — access fields by key with student["key"].
+    # sep=" | " passes a custom separator to print(), replacing the default space between arguments.
     for student in students:
         print(student["name"], student["house"], student["age"], student["gender"], student["wand"], student["patronus"], sep=" | ")
-    
-    print("dict is a data structure in Python that can hold key-value pairs. It is unordered, changeable, and does not allow duplicate keys. Dictionaries are defined using curly braces {}.")
 
-# this is an interface to run each function from main 
-
+# Menu interface — lets the user choose which function to run.
 def main():
-
-#which function do you want to run?
-    choice = input("which function do you want to run? (list, len, dict) ")
+    choice = input("Which function do you want to run? (list, len, dict) ")
 
     if choice == "list":
         list_function()
@@ -60,7 +60,6 @@ def main():
     elif choice == "dict":
         dict_function()
     else:
-        print("invalid choice")
+        print("Invalid choice.")
 
 main()
-
