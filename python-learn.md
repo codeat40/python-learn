@@ -31,6 +31,7 @@ The full course is freely available on freeCodeCamp's YouTube channel:
 | 01  | Functions, Variables, Types, Strings, Pseudocode | [lesson01/lesson01.md](lesson01/lesson01.md) |
 | 02  | Conditionals, Comparison Operators, match        | [lesson02/lesson02.md](lesson02/lesson02.md) |
 | 03  | Loops, Lists, Dictionaries, Escape Characters    | [lesson03/_lesson03.md](lesson03/_lesson03.md) |
+| 04  | Exceptions — try, except, else, ValueError, pass | [lesson04/lesson04.md](lesson04/lesson04.md) |
 
 _More lessons will be added as the course progresses._
 
